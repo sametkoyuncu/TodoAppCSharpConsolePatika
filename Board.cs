@@ -5,8 +5,8 @@ namespace TodoAppCSharpConsolePatika
     public class Board
     {
         public List<Card> TODO = new List<Card>();
-        List<Card> IN_PROGRESS = new List<Card>();
-        List<Card> DONE = new List<Card>();
+        public List<Card> IN_PROGRESS = new List<Card>();
+        public List<Card> DONE = new List<Card>();
 
         public Board()
         {
