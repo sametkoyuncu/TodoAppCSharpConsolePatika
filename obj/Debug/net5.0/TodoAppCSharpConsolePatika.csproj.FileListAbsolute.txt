@@ -1,0 +1,16 @@
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.exe
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.deps.json
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.runtimeconfig.json
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.runtimeconfig.dev.json
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.dll
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\ref\TodoAppCSharpConsolePatika.dll
+C:\gitRepo\TodoAppCSharpConsolePatika\bin\Debug\net5.0\TodoAppCSharpConsolePatika.pdb
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.csprojAssemblyReference.cache
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.GeneratedMSBuildEditorConfig.editorconfig
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.AssemblyInfoInputs.cache
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.AssemblyInfo.cs
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.csproj.CoreCompileInputs.cache
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.dll
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\ref\TodoAppCSharpConsolePatika.dll
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.pdb
+C:\gitRepo\TodoAppCSharpConsolePatika\obj\Debug\net5.0\TodoAppCSharpConsolePatika.genruntimeconfig.cache

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\zipla\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\zipla\\.nuget\\packages"
+    ]
+  }
+}
