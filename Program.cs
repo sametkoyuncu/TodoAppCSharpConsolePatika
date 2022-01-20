@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TodoAppCSharpConsolePatika
 {
     class Program
     {
+        public static Board _board { get; set; }
+        public static UserList _users { get; set; }
+
         static void Main(string[] args)
         {
-            HomePage();
+            _board = new Board();
+            _users = new UserList();
+
+            while (true)
+            {
+                HomePage();
+            }
         }
 
         public static void HomePage()
@@ -16,7 +24,7 @@ namespace TodoAppCSharpConsolePatika
             int choice;
             Console.WriteLine("Lütfen yapmak istediğiniz işlemi seçiniz :)");
             Console.WriteLine("*******************************************");
-            Console.WriteLine("(1) Board Listelemek");
+            Console.WriteLine("(1) Board Listelemek");// getBoard and printLine (from getBoard) methods call
             Console.WriteLine("(2) Board'a Kart Eklemek");
             Console.WriteLine("(3) Board'dan Kart Silmek");
             Console.WriteLine("(4) Kart Taşımak");
@@ -25,9 +33,10 @@ namespace TodoAppCSharpConsolePatika
             switch (choice)
             {
                 case 1:
-                    getBoards();
+                    getBoard();
                     break;
                 case 2:
+                    newCard();
                     break;
                 case 3:
                     break;
@@ -39,37 +48,57 @@ namespace TodoAppCSharpConsolePatika
             }
         }
 
-        public static void getBoards()
+        private static void newCard()
         {
-            Board board = new Board();
-            UserList users = new UserList(); // sadece varsayılan kullanıcılar olacak
+            string _title, _content;
+            int _size;
+            int _userId;
+
+            Console.WriteLine("Başlık Giriniz                                  :");
+            _title = Console.ReadLine();
+
+            Console.WriteLine("İçerik Giriniz                                  :");
+            _content = Console.ReadLine();
+
+            Console.WriteLine("Büyüklük Seçiniz -> XS(1),S(2),M(3),L(4),XL(5)  :");
+            _size = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Kişi Seçiniz (1-5 arası bir rakam)              :");
+            _userId = Int32.Parse(Console.ReadLine());
+
+            _board.TODO.Add(new Card(_title, _content, _userId, _size));
+        }
+
+        public static void getBoard()
+        {
+            // bunlar main veya homepage den alınabilir duruma göre artık
 
             Console.WriteLine("TODO Line");
             Console.WriteLine("************************");
 
-            if (board.TODO.Count > 0)
-                printColumn(board.TODO, users);
+            if (_board.TODO.Count > 0)
+                printLine(_board.TODO, _users);
             else
                 Console.WriteLine("~BOŞ~");
             //
             Console.WriteLine("IN PROGRESS Line");
             Console.WriteLine("************************");
 
-            if (board.IN_PROGRESS.Count > 0)
-                printColumn(board.IN_PROGRESS, users);
+            if (_board.IN_PROGRESS.Count > 0)
+                printLine(_board.IN_PROGRESS, _users);
             else
                 Console.WriteLine("~BOŞ~");
             //
             Console.WriteLine("DONE Line");
             Console.WriteLine("************************");
 
-            if (board.DONE.Count > 0)
-                printColumn(board.DONE, users);
+            if (_board.DONE.Count > 0)
+                printLine(_board.DONE, _users);
             else
                 Console.WriteLine("~BOŞ~");
         }
         // kolonları yazdıracak fonksiyon
-        public static void printColumn(List<Card> col, UserList users)
+        public static void printLine(List<Card> col, UserList users)
         {
             foreach (var item in col)
             {
