@@ -15,5 +15,16 @@ namespace TodoAppCSharpConsolePatika
             IN_PROGRESS.Add(new Card("DEPLOY", "Book Store uygulamasını yayınla.", 2, 3));
             DONE.Add(new Card("Build Al", "Book Store uygulamasının build'ini al.", 3, 4));
         }
+
+        public List<Card> GetProperty(string str)
+        {
+            // aslında yanlış
+            if (str == "TODO")
+                return this.TODO;
+            else if (str == "IN_PROGRESS")
+                return this.IN_PROGRESS;
+            else
+                return this.DONE;
+        }
     }
 }

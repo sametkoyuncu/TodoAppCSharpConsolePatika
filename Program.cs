@@ -42,10 +42,102 @@ namespace TodoAppCSharpConsolePatika
                     removeCard();
                     break;
                 case 4:
+                    moveCard();
                     break;
                 default:
                     Console.WriteLine("Geçersiz seçim yaptınız!");
                     break;
+            }
+        }
+
+        private static void moveCard()
+        {
+            // index al, kartı al, eskiden sil yeniye ekle 4 işlem
+            string _title, _line = String.Empty;
+            Card _card = new Card(null, null, -1, -1); // olası patlama
+            int index = -1;
+            Console.WriteLine("Öncelikle taşımak istediğiniz kartı seçmeniz gerekiyor.");
+            Console.WriteLine("Lütfen kart başlığını yazınız:");
+            _title = Console.ReadLine();
+
+            int todo, inProgress, done;
+            todo = _board.TODO.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+            inProgress = _board.IN_PROGRESS.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+            done = _board.DONE.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+
+            // kart varsa kartı burada çek, ekranda göster
+            if (todo >= 0)
+            {
+                _line = "TODO";
+                index = todo;
+            }
+            else if (inProgress >= 0)
+            {
+                _line = "IN_PROGRESS";
+                index = inProgress;
+            }
+            else if (done >= 0)
+            {
+                _line = "DONE";
+                index = done;
+            }
+            else
+            {
+                Console.WriteLine("Aradığınız krtiterlere uygun kart board'da bulunamadı. Lütfen bir seçim yapınız.");
+                Console.WriteLine("* İşlemi sonlandırmak için : (1)");
+                Console.WriteLine("* Yeniden denemek için : (2)");
+                int _choice = Int32.Parse(Console.ReadLine());
+
+                if (_choice == 1)
+                    HomePage();
+                else if (_choice == 2)
+                    moveCard();
+                else
+                {
+                    Console.WriteLine("Geçersiz işlem seçtiniz. İşlem sonlandırılıyor.");
+                    HomePage();
+                }
+            }
+
+            if (_line is not null)
+            {
+                _card = _board.GetProperty(_line).Find(x => x.Title.ToLower() == _title.ToLower());
+
+                Console.WriteLine("Bulunan Kart Bilgileri:");
+                Console.WriteLine("**************************************");
+                Console.WriteLine("Başlık      : {0}", _card.Title);
+                Console.WriteLine("İçerik      : {0}", _card.Content);
+                Console.WriteLine("Atanan Kişi : {0}", _users.all.Find(x => x.Id == _card.UserId).FullName);
+                Console.WriteLine("Büyüklük    : {0}", ((SizeEnum)_card.Size).ToString());
+                Console.WriteLine("Line        : {0}", _line);
+
+                Console.WriteLine("Lütfen taşımak istediğiniz Line'ı seçiniz:");
+                Console.WriteLine("(1) TODO");
+                Console.WriteLine("(2) IN PROGRESS");
+                Console.WriteLine("(3) DONE");
+                int _choice1 = Int32.Parse(Console.ReadLine());
+
+                if (_choice1 == 1)
+                {
+                    _board.GetProperty(_line).RemoveAt(index);
+                    _board.TODO.Add(_card);
+                }
+                else if (_choice1 == 2)
+                {
+                    _board.GetProperty(_line).RemoveAt(index);
+                    _board.IN_PROGRESS.Add(_card);
+                }
+                else if (_choice1 == 3)
+                {
+                    _board.GetProperty(_line).RemoveAt(index);
+                    _board.DONE.Add(_card);
+                }
+                else
+                {
+                    Console.WriteLine("Geçersiz işlem seçtiniz. İşlem sonlandırılıyor.");
+                    HomePage();
+                }
+                getBoard();
             }
         }
 
@@ -115,7 +207,6 @@ namespace TodoAppCSharpConsolePatika
             //
             Console.WriteLine("DONE Line");
             Console.WriteLine("************************");
-
             if (_board.DONE.Count > 0)
                 printLine(_board.DONE, _users);
             else
