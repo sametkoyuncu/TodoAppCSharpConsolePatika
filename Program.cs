@@ -161,7 +161,11 @@ namespace TodoAppCSharpConsolePatika
             else if (done >= 0)
                 _board.DONE.RemoveAt(done);
             else
+            {
                 Console.WriteLine("Aradığınız kart bulunamadı.");
+                HomePage();
+            }
+            Console.WriteLine("İşlem başarılı bir şekilde tamamlandı.");
         }
 
         private static void newCard()
