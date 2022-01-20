@@ -39,6 +39,7 @@ namespace TodoAppCSharpConsolePatika
                     newCard();
                     break;
                 case 3:
+                    removeCard();
                     break;
                 case 4:
                     break;
@@ -46,6 +47,29 @@ namespace TodoAppCSharpConsolePatika
                     Console.WriteLine("Geçersiz seçim yaptınız!");
                     break;
             }
+        }
+
+        private static void removeCard()
+        {
+            string _title;
+            Console.WriteLine("Öncelikle silmek istediğiniz kartı seçmeniz gerekiyor.");
+            Console.WriteLine("Lütfen kart başlığını yazınız:");
+            _title = Console.ReadLine();
+
+            // AuthorList.RemoveAt(2);
+            int todo, inProgress, done;
+            todo = _board.TODO.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+            inProgress = _board.IN_PROGRESS.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+            done = _board.DONE.FindIndex(x => x.Title.ToLower() == _title.ToLower());
+
+            if (todo >= 0)
+                _board.TODO.RemoveAt(todo);
+            else if (inProgress >= 0)
+                _board.IN_PROGRESS.RemoveAt(inProgress);
+            else if (done >= 0)
+                _board.DONE.RemoveAt(done);
+            else
+                Console.WriteLine("Aradığınız kart bulunamadı.");
         }
 
         private static void newCard()
